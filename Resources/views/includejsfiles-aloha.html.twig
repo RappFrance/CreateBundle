@@ -1,10 +1,11 @@
 {% include "SymfonyCmfCreateBundle::includejsfiles-create.html.twig" %}
 
 {% javascripts output="/js/aloha.js"
-                '@SymfonyCmfCreateBundle/Resources/public/vendor/create/deps/aloha/lib/require.js'
-                '@SymfonyCmfCreateBundle/Resources/public/vendor/create/deps/aloha/lib/aloha.js'
-                '@SymfonyCmfCreateBundle/Resources/public/vendor/create/deps/aloha/lib/aloha-jquery-noconflict.js'
-                '@SymfonyCmfCreateBundle/Resources/public/js/init-create-aloha.js'
+'@SymfonyCmfCreateBundle/Resources/public/vendor/create/deps/jQuery.UI.Effect/jquery-ui-1.10.0.custom.js'
+'@SymfonyCmfCreateBundle/Resources/public/vendor/create/deps/aloha.old/lib/aloha-jquery-noconflict.js'
+                '@SymfonyCmfCreateBundle/Resources/public/vendor/create/deps/aloha.old/lib/require.js'
+                '@SymfonyCmfCreateBundle/Resources/public/vendor/create/deps/aloha-bare.js'
+'@SymfonyCmfCreateBundle/Resources/public/js/init-create-aloha.js'
 %}
     <script src="{{ asset_url }}"
         data-aloha-plugins="common/ui,
