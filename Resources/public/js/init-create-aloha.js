@@ -1,3 +1,5 @@
+Aloha.jQuery = jQuery;
+
 jQuery(document).ready(function() {
     // Instantiate Create
     jQuery('body').midgardCreate({
@@ -14,13 +16,13 @@ jQuery(document).ready(function() {
         tags: true,
         // Use Aloha for all text editing
         editorWidgets: {
-            'default': 'aloha'
-        },
+             'default': 'aloha'
+         },
         editorOptions: {
-            aloha: {
-                widget: 'alohaWidget'
-            }
-        },
+             aloha: {
+                 widget: 'alohaWidget'
+             }
+         },
         collectionWidgets: {
             'default': null,
             'feature': 'midgardCollectionAdd'
