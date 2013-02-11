@@ -1,3 +1,7 @@
+{#
+ * To make it working, you must clone our aloha repository (fork) in Ressource/public/vendor/create/deps/aloha
+ * git clone git@github.com:RappFrance/Aloha-Editor.git aloha and co on versionReadyForSymfonyCmf branch
+#}
 {% include "SymfonyCmfCreateBundle::includejsfiles-create.html.twig" %}
 
 <script type="text/javascript">
@@ -6,17 +10,51 @@
 
     var Aloha = window.Aloha || ( window.Aloha = {} );
 
-    Aloha.settings =
-    {
+    Aloha.settings = {
         baseUrl: '/bundles/symfonycmfcreate/vendor/create/deps/aloha/src/lib/',
-        locale: 'en',
-        sidebar: { disabled: true },
-
-        plugins:
-        {
-            format: ['b', 'i', 'p', 'sub', 'sup', 'del', 'title', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'removeFormat' ],
-            draganddropfiles:
-            {
+        locale: 'fr',
+        plugins: {
+            format: {
+                config: [  'b', 'i', 'p', 'sub', 'sup', 'del', 'title', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'removeFormat' ],
+                editables : {
+                    // no formatting allowed for title
+                    '#title'    : [ ]
+                }
+            },
+            link: {
+                editables : {
+                    // No links in the title.
+                    '#title'    : [  ]
+                }
+            },
+            list: {
+                editables : {
+                    // No lists in the title.
+                    '#title'    : [  ]
+                }
+            },
+            abbr: {
+                editables : {
+                    // No abbr in the title.
+                    '#title'    : [  ]
+                }
+            },
+            image: {
+                'fixedAspectRatio': true,
+                'maxWidth': 1024,
+                'minWidth': 10,
+                'maxHeight': 786,
+                'minHeight': 10,
+                'globalselector': '.global',
+                'ui': {
+                    'oneTab': false
+                },
+                editables : {
+                    // No images in the title.
+                    '#title'    : [  ]
+                }
+            },
+            draganddropfiles: {
                 max_file_size: '200000',
                 upload:
                 {
@@ -26,10 +64,51 @@
                     www_encoded       : false
                 }
             }
+        },
+        sidebar: {
+            disabled: true
+        },
+        contentHandler: {
+            allows: {
+                elements: [
+                    'a', 'abbr', 'b', 'blockquote', 'br', 'caption', 'cite', 'code', 'col',
+                    'colgroup', 'dd', 'del', 'dl', 'dt', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+                    'i', 'img', 'li', 'ol', 'p', 'pre', 'q', 'small', 'strike', 'strong',
+                    'sub', 'sup', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr', 'u',
+                    'ul', 'span', 'hr', 'object', 'div'
+                ],
+
+                attributes: {
+                    'a': ['href', 'title', 'id', 'class', 'target', 'data-gentics-aloha-repository', 'data-gentics-aloha-object-id'],
+                    'div': [ 'id', 'class'],
+                    'abbr': ['title'],
+                    'blockquote': ['cite'],
+                    'br': ['class'],
+                    'col': ['span', 'width'],
+                    'colgroup': ['span', 'width'],
+                    'img': ['align', 'alt', 'height', 'src', 'title', 'width', 'class'],
+                    'ol': ['start', 'type'],
+                    'q': ['cite'],
+                    'p': ['class'],
+                    'table': ['summary', 'width'],
+                    'td': ['abbr', 'axis', 'colspan', 'rowspan', 'width'],
+                    'th': ['abbr', 'axis', 'colspan', 'rowspan', 'scope', 'width'],
+                    'ul': ['type'],
+                    'span': ['class','style','lang','xml:lang']
+                },
+
+                protocols: {
+                    'a': {'href': ['ftp', 'http', 'https', 'mailto', '__relative__']},
+                    'blockquote': {'cite': ['http', 'https', '__relative__']},
+                    'img': {'src' : ['http', 'https', '__relative__']},
+                    'q': {'cite': ['http', 'https', '__relative__']}
+                }
+            }
         }
-    }
+    };
+
 </script>
-{% javascripts output="/js/create.js"
+{% javascripts output="/js/alaho.js"
                 '@SymfonyCmfCreateBundle/Resources/public/vendor/create/deps/aloha/src/lib/require.js'
                 '@SymfonyCmfCreateBundle/Resources/public/vendor/create/deps/aloha/src/lib/aloha.js'
                 '@SymfonyCmfCreateBundle/Resources/public/js/init-create-aloha.js'          
@@ -37,12 +116,16 @@
     <script src="{{ asset_url }}"
         data-aloha-plugins="common/ui,
                             common/format,
+                            common/table,
                             common/list,
                             common/link,
                             common/highlighteditables,
-                            common/image,
-                            extra/imagebrowser,
-                            extra/draganddropfiles"
+                            common/block,
+                            common/undo,
+                            common/contenthandler,
+                            common/paste,
+                            common/commands,
+                            common/abbr"
     >
     </script>
 {% endjavascripts %}
