@@ -2,7 +2,6 @@
  * To make it working, you must clone aloha repository in Ressource/public/vendor/create/deps/aloha
  * git clone git://github.com/alohaeditor/Aloha-Editor.git aloha
  */
-
 Aloha.jQuery = jQuery;
 
 jQuery(document).ready(function() {
