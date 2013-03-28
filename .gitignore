@@ -1,3 +1,4 @@
 .DS_Store
 /vendor/
 Resources/public/vendor/hallo
+*.sublime-*
