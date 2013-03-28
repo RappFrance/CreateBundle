@@ -81,14 +81,15 @@ class JsloaderController
      *
      * When using hallo, the controller can include the compiled js files from
      * hallo's examples folder or use the assetic coffee filter.
-     * When developing hallo, make sure to use the coffee filter (pass 'hallo-coffee' as 
+     * When developing hallo, make sure to use the coffee filter (pass 'hallo-coffee' as
      * editor).
      *
      * To use another editor simply create a template following the naming below:
      *   SymfonyCmfCreateBundle::includejsfiles-%editor%.html.twig
      * and pass the appropriate parameter.
      *
-     * @param string $editor the name of the editor to load, currently hallo and aloha are supported
+     * @param string $editor the name of the editor to load, currently only
+     *      hallo and hallo-coffee are supported
      */
     public function includeJSFilesAction($editor = 'hallo')
     {
@@ -104,7 +105,8 @@ class JsloaderController
                 'cmfCreateStanbolUrl' => $this->stanbolUrl,
                 'cmfCreateImageUploadEnabled' => (boolean) $this->imageClass,
                 'cmfCreateHalloFixedToolbar' => (boolean) $this->fixedToolbar,
-                'cmfCreateHalloPlainTextTypes' => json_encode($this->plainTextTypes))
+                'cmfCreateHalloPlainTextTypes' => json_encode($this->plainTextTypes)
+            )
         );
 
         return $this->viewHandler->handle($view);
